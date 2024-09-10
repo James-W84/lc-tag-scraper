@@ -4,7 +4,6 @@ import requests
 import csv
 import json
 
-
 parser = argparse.ArgumentParser(
                     prog='Leetcode Tag Scraper',
                     description='Given a CSV of leetcode questions associated with a company, generate a list of question tags sorted by frequency',)
@@ -21,7 +20,6 @@ headers = {
     'Host': 'leetcode.com',
     'Cookies': '',
     'x-csrftoken': '',
-
 }
 
 query = """
@@ -36,7 +34,6 @@ query singleQuestionTopicTags($titleSlug: String!) {
 """
 
 tag_dict = {}
-
 
 with open(f'src/{filename}.csv', 'r') as file:
     csvreader = csv.reader(file)
@@ -66,4 +63,6 @@ with open(f'src/{filename}.csv', 'r') as file:
                 else:
                     tag_dict[slug] = 1
 
-print(tag_dict)
+sorted_dict = dict(sorted(tag_dict.items(), key=lambda item: item[1], reverse=True))
+
+print(json.dumps(sorted_dict, indent=4))
