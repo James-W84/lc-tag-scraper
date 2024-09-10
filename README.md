@@ -1,5 +1,9 @@
 # How to Run the Application
 
+## File source
+
+Add the bank of CSV files to a `src/` folder in the root directory. For reference, view the files in [this repository](https://github.com/krishnadey30/LeetCode-Questions-CompanyWise).
+
 ## Installation
 
 First, install the required packages by running:
